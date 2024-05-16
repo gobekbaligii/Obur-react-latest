@@ -17,6 +17,7 @@ import {
   Payment,
   Register,
   ShoppingCart,
+  MenuList,
 } from "../Pages";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
@@ -61,6 +62,7 @@ function App() {
       <div className="pb-5">
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/menuList" element={<MenuList />}></Route>
           <Route
             path="/menuItemDetails/:menuItemId"
             element={<MenuItemDetails />}></Route>

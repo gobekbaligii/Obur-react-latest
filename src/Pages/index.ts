@@ -14,8 +14,10 @@ import OrderDetails from "./Order/OrderDetails";
 import AllOrders from "./Order/AllOrders";
 import MenuItemList from "./MenuItem/MenuItemList";
 import MenuItemUpsert from "./MenuItem/MenuItemUpsert";
+import MenuList from "./MenuList";
 
 export {
+  MenuList,
   MenuItemUpsert,
   MenuItemList,
   AllOrders,

@@ -1,17 +1,16 @@
 import React from "react";
-import { Restaurants } from "../Components/Page/Home";
+import { MenuItemList } from "../Components/Page/Home";
 import Banner from "../Components/Page/Common/Banner";
 
-function Home() {
+function MenuList() {
   return (
     <div>
       <Banner />
       <div className="container p-2">
-        <Restaurants />
-        {/* <MenuItemList /> */}
+        <MenuItemList />
       </div>
     </div>
   );
 }
 
-export default Home;
+export default MenuList;
