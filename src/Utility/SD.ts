@@ -21,6 +21,15 @@ export enum SD_Categories {
   BEVERAGES = "Beverages",
 }
 
+export enum SD_Restaurants {
+  AYŞE_NIN_YERI = "Ayşe'nin Yeri",
+  USTA_KEBAP = "Usta Kebap",
+  DENIZ_RESTORAN = "Deniz Restoran",
+  GOZLEME_EVI = "Gözleme Evi",
+  PIZZA_VALLEY = "Pizza Valley",
+  SUGAR_CRASH = "Sugar Crash",
+}
+
 export enum SD_SortTypes {
   PRICE_LOW_HIGH = "Price Low - High",
   PRICE_HIGH_LOW = "Price High - Low",

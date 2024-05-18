@@ -7,7 +7,7 @@ import {
 } from "../../apis/menuItemApi";
 import { useNavigate, useParams } from "react-router-dom";
 import MainLoader from "../../Components/Page/Common/MainLoader";
-import { SD_Categories } from "../../Utility/SD";
+import { SD_Categories, SD_Restaurants } from "../../Utility/SD";
 
 const Categories = [
   SD_Categories.APPETIZER,
@@ -16,11 +16,20 @@ const Categories = [
   SD_Categories.ENTREE,
 ];
 
+const Restaurants = [
+  SD_Restaurants.AYŞE_NIN_YERI,
+  SD_Restaurants.DENIZ_RESTORAN,
+  SD_Restaurants.GOZLEME_EVI,
+  SD_Restaurants.PIZZA_VALLEY,
+  SD_Restaurants.SUGAR_CRASH,
+  SD_Restaurants.USTA_KEBAP,
+];
+
 const menuItemData = {
   name: "",
   description: "",
   specialTag: "",
-  category: Categories[0],
+  restaurantName: Restaurants[0],
   price: "",
 };
 
@@ -43,7 +52,7 @@ function MenuItemUpsert() {
         name: data.result.name,
         description: data.result.description,
         specialTag: data.result.specialTag,
-        category: data.result.category,
+        restaurantName: data.result.restaurantId,
         price: data.result.price,
       };
       setMenuItemInputs(tempData);
@@ -105,7 +114,7 @@ function MenuItemUpsert() {
     formData.append("Name", menuItemInputs.name);
     formData.append("Description", menuItemInputs.description);
     formData.append("SpecialTag", menuItemInputs.specialTag ?? "");
-    formData.append("Category", menuItemInputs.category);
+    formData.append("RestaurantId", menuItemInputs.restaurantName);
     formData.append("Price", menuItemInputs.price);
     if (imageToDisplay) formData.append("File", imageToStore);
 
@@ -163,11 +172,13 @@ function MenuItemUpsert() {
             />
             <select
               className="form-control mt-3 form-select"
-              name="category"
-              value={menuItemInputs.category}
+              name="restaurantName"
+              value={menuItemInputs.restaurantName}
               onChange={handleMenuItemInput}>
-              {Categories.map((category) => (
-                <option value={category}>{category}</option>
+              {Restaurants.map((restaurantName) => (
+                <option value={Restaurants.indexOf(restaurantName) + 1}>
+                  {restaurantName}
+                </option>
               ))}
             </select>
             <input
