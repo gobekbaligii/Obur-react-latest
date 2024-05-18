@@ -1,15 +1,8 @@
 import React from "react";
-import {
-  apiResponse,
-  menuItemModel,
-  userModel,
-  restaurantModel,
-} from "../../../Interfaces";
+import { userModel, restaurantModel } from "../../../Interfaces";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useUpdateShoppingCartMutation } from "../../../apis/shoppingCartApi";
-import MiniLoader from "../Common/MiniLoader";
-import { toastNotify } from "../../../Helper";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Storage/Redux/store";
 import { useNavigate } from "react-router-dom";
@@ -26,24 +19,6 @@ function RestaurantCard(props: Props) {
     (state: RootState) => state.userAuthStore
   );
 
-  /*  const handleAddToCart = async (menuItemId: number) => {
-    if (!userData.id) {
-      navigate("/login");
-      return;
-    }
-    setIsAddingToCart(true);
-
-    const response: apiResponse = await updateShoppingCart({
-      menuItemId: menuItemId,
-      updateQuantityBy: 1,
-      userId: userData.id,
-    });
-    if (response.data && response.data.isSuccess) {
-      toastNotify("Item added to cart successfully!");
-    }
-    setIsAddingToCart(false);
-  }; */
-
   return (
     <div className="col-md-4 col-12 p-4">
       <div
@@ -51,7 +26,7 @@ function RestaurantCard(props: Props) {
         style={{ boxShadow: "0 1px 7px 0 rgb(0 0 0 / 50%)" }}>
         <div className="card-body pt-2">
           <div className="row col-10 offset-1 p-4">
-            <Link to={`/menuList/`}>
+            <Link to={`/menuList/${props.restaurantItem.id}`}>
               <img
                 src={props.restaurantItem.image}
                 style={{ borderRadius: "50%" }}
@@ -78,34 +53,10 @@ function RestaurantCard(props: Props) {
               </i>
             )}
 
-          {/* {isAddingToCart ? (
-            <div
-              style={{
-                position: "absolute",
-                top: "15px",
-                right: "15px",
-              }}>
-              <MiniLoader />
-            </div>
-          ) : (
-            <i
-              className="bi bi-cart-plus btn btn-outline-danger"
-              style={{
-                position: "absolute",
-                top: "15px",
-                right: "15px",
-                padding: "5px 10px",
-                borderRadius: "3px",
-                outline: "none !important",
-                cursor: "pointer",
-              }}
-              onClick={() => handleAddToCart(props.restaurantItem.id)}></i>
-          )} */}
-
           <div className="text-center">
             <p className="card-title m-0 text-success fs-3">
               <Link
-                to={`/restaurantDetails/${props.restaurantItem.id}`}
+                to={`/menuList/${props.restaurantItem.id}`}
                 style={{ textDecoration: "none", color: "green" }}>
                 {props.restaurantItem.name}
               </Link>
@@ -117,9 +68,7 @@ function RestaurantCard(props: Props) {
           <p className="card-text" style={{ textAlign: "center" }}>
             {props.restaurantItem.description}
           </p>
-          <div className="row text-center">
-            {/* <h4>${props.restaurantCard.price}</h4> */}
-          </div>
+          <div className="row text-center"></div>
         </div>
       </div>
     </div>

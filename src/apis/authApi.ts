@@ -4,7 +4,6 @@ const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://oburapi.azurewebsites.net/api/",
-    /* baseUrl: "https://localhost:7161/api/", */
   }),
   endpoints: (builder) => ({
     registerUser: builder.mutation({

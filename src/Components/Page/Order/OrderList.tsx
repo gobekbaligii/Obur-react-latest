@@ -31,7 +31,7 @@ function OrderList({ isLoading, orderData }: OrderListProps) {
                   <div className="col-2">{orderItem.pickupName}</div>
                   <div className="col-2">{orderItem.pickupPhoneNumber}</div>
                   <div className="col-1">
-                    $ {orderItem.orderTotal!.toFixed(2)}
+                    ₺ {orderItem.orderTotal!.toFixed(2)}
                   </div>
                   <div className="col-1"># {orderItem.totalItems}</div>
                   <div className="col-2">

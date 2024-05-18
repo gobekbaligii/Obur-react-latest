@@ -4,7 +4,6 @@ const orderApi = createApi({
   reducerPath: "orderApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://oburapi.azurewebsites.net/api/",
-    /* baseUrl: "https://localhost:7161/api/", */
     prepareHeaders: (headers: Headers, api) => {
       const token = localStorage.getItem("token");
       token && headers.append("Authorization", "Bearer " + token);

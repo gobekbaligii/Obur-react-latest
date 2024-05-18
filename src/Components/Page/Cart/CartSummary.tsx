@@ -37,6 +37,7 @@ function CartSummary() {
         updateQuantityBy: 0,
         userId: userData.id,
       });
+      console.log(cartItem);
       dispatch(removeFromCart({ cartItem, quantity: 0 }));
     } else {
       //update the quantity
@@ -76,11 +77,11 @@ function CartSummary() {
             <div className="d-flex justify-content-between align-items-center">
               <h4 style={{ fontWeight: 300 }}>{cartItem.menuItem?.name}</h4>
               <h4>
-                ${(cartItem.quantity! * cartItem.menuItem!.price).toFixed(2)}
+                ₺{(cartItem.quantity! * cartItem.menuItem!.price).toFixed(2)}
               </h4>
             </div>
             <div className="flex-fill">
-              <h4 className="text-danger">${cartItem.menuItem?.price}</h4>
+              <h4 className="text-danger">₺{cartItem.menuItem?.price}</h4>
             </div>
             <div className="d-flex justify-content-between">
               <div

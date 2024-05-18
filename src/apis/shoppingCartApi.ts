@@ -4,7 +4,6 @@ const shoppingCartApi = createApi({
   reducerPath: "shoppingCartApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://oburapi.azurewebsites.net/api/",
-    /* baseUrl: "https://localhost:7161/api/", */
     prepareHeaders: (headers: Headers, api) => {
       const token = localStorage.getItem("token");
       token && headers.append("Authorization", "Bearer " + token);
@@ -33,9 +32,19 @@ const shoppingCartApi = createApi({
       }),
       invalidatesTags: ["ShoppingCarts"],
     }),
+    deleteShoppingCart: builder.mutation({
+      query: (shoppingCartId) => ({
+        url: `shoppingcart/${shoppingCartId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["ShoppingCarts"],
+    }),
   }),
 });
 
-export const { useGetShoppingCartQuery, useUpdateShoppingCartMutation } =
-  shoppingCartApi;
+export const {
+  useGetShoppingCartQuery,
+  useUpdateShoppingCartMutation,
+  useDeleteShoppingCartMutation,
+} = shoppingCartApi;
 export default shoppingCartApi;

@@ -105,9 +105,6 @@ function MenuItemCard(props: Props) {
                 {props.menuItem.name}
               </Link>
             </p>
-            <p className="badge bg-secondary" style={{ fontSize: "12px" }}>
-              {props.menuItem.category}
-            </p>
           </div>
           <p className="card-text" style={{ textAlign: "center" }}>
             {props.menuItem.description}

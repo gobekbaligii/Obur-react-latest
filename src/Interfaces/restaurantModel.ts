@@ -1,5 +1,5 @@
 export default interface restaurantModel {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   specialTag: string;

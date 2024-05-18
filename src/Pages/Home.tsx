@@ -8,7 +8,6 @@ function Home() {
       <Banner />
       <div className="container p-2">
         <Restaurants />
-        {/* <MenuItemList /> */}
       </div>
     </div>
   );

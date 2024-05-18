@@ -63,6 +63,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/menuList" element={<MenuList />}></Route>
+          <Route path="/menuList/:restaurantId" element={<MenuList />}></Route>
           <Route
             path="/menuItemDetails/:menuItemId"
             element={<MenuItemDetails />}></Route>

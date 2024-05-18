@@ -6,4 +6,5 @@ export default interface menuItemModel {
   category: string;
   price: number;
   image: string;
+  restaurantId?: number;
 }

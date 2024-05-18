@@ -1,8 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { menuItemModel } from "../../../Interfaces";
-import MenuItemCard from "./MenuItemCard";
-import { useGetMenuItemsQuery } from "../../../apis/menuItemApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setMenuItem } from "../../../Storage/Redux/menuItemSlice";
 import MainLoader from "../Common/MainLoader";

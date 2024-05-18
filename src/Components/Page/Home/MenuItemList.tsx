@@ -2,20 +2,23 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { menuItemModel } from "../../../Interfaces";
 import MenuItemCard from "./MenuItemCard";
-import { useGetMenuItemsQuery } from "../../../apis/menuItemApi";
+import { useGetMenuItemsByRestaurantQuery } from "../../../apis/menuItemApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setMenuItem } from "../../../Storage/Redux/menuItemSlice";
 import MainLoader from "../Common/MainLoader";
 import { RootState } from "../../../Storage/Redux/store";
 import { SD_SortTypes } from "../../../Utility/SD";
+import { useParams } from "react-router-dom";
 
 function MenuItemList() {
+  const { restaurantId } = useParams();
   const [menuItems, setMenuItems] = useState<menuItemModel[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [categoryList, setCategoryList] = useState([""]);
   const dispatch = useDispatch();
   const [sortName, setSortName] = useState(SD_SortTypes.NAME_A_Z);
-  const { data, isLoading } = useGetMenuItemsQuery(null);
+
+  const { data, isLoading } = useGetMenuItemsByRestaurantQuery(restaurantId);
 
   const sortOptions: Array<SD_SortTypes> = [
     SD_SortTypes.PRICE_LOW_HIGH,
@@ -43,13 +46,6 @@ function MenuItemList() {
     if (!isLoading) {
       dispatch(setMenuItem(data.result));
       setMenuItems(data.result);
-      const tempCategoryList = ["All"];
-      data.result.forEach((item: menuItemModel) => {
-        if (tempCategoryList.indexOf(item.category) === -1) {
-          tempCategoryList.push(item.category);
-        }
-      });
-      setCategoryList(tempCategoryList);
     }
   }, [isLoading]);
 

@@ -3,6 +3,7 @@ import { MenuItemList } from "../Components/Page/Home";
 import Banner from "../Components/Page/Common/Banner";
 
 function MenuList() {
+  const restaurantId = 1;
   return (
     <div>
       <Banner />

@@ -45,7 +45,7 @@ function MenuItemList() {
               <div className="col-1">Image</div>
               <div className="col-1">ID</div>
               <div className="col-2">Name</div>
-              <div className="col-2">Category</div>
+              <div className="col-2">Restaurant</div>
               <div className="col-1">Price</div>
               <div className="col-2">Special Tag</div>
               <div className="col-1">Action</div>
@@ -63,7 +63,7 @@ function MenuItemList() {
                   </div>
                   <div className="col-1">{menuItem.id}</div>
                   <div className="col-2">{menuItem.name}</div>
-                  <div className="col-2">{menuItem.category}</div>
+                  <div className="col-2">{menuItem.restaurantId}</div>
                   <div className="col-1">₺{menuItem.price}</div>
                   <div className="col-2">{menuItem.specialTag}</div>
                   <div className="col-1">

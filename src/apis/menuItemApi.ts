@@ -4,7 +4,6 @@ const menuItemApi = createApi({
   reducerPath: "menuItemApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://oburapi.azurewebsites.net/api/",
-    /*  baseUrl: "https://localhost:7161/api/", */
     prepareHeaders: (headers: Headers, api) => {
       const token = localStorage.getItem("token");
       token && headers.append("Authorization", "Bearer " + token);
@@ -47,10 +46,20 @@ const menuItemApi = createApi({
       }),
       invalidatesTags: ["MenuItems"],
     }),
+    getMenuItemsByRestaurant: builder.query({
+      query: (restaurantId) => ({
+        url: `menuitem/restaurants/${restaurantId}`,
+        params: {
+          ...(restaurantId && { restaurantId }),
+        },
+      }),
+      providesTags: ["MenuItems"],
+    }),
   }),
 });
 
 export const {
+  useGetMenuItemsByRestaurantQuery,
   useGetMenuItemsQuery,
   useGetMenuItemByIdQuery,
   useCreateMenuItemMutation,

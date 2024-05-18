@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { withAdminAuth, withAuth } from "../../HOC";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
-import { RootState } from "../../Storage/Redux/store";
 import { useGetAllOrdersQuery } from "../../apis/orderApi";
 import OrderList from "../../Components/Page/Order/OrderList";
 import MainLoader from "../../Components/Page/Common/MainLoader";
 import { inputHelper } from "../../Helper";
 import { SD_Status } from "../../Utility/SD";
-import { orderHeaderModel } from "../../Interfaces";
 
 const filterOptions = [
   "All",

@@ -1,19 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetMenuItemByIdQuery } from "../apis/menuItemApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useUpdateShoppingCartMutation } from "../apis/shoppingCartApi";
 import MainLoader from "../Components/Page/Common/MainLoader";
-import MiniLoader from "../Components/Page/Common/MiniLoader";
-import { apiResponse, userModel } from "../Interfaces";
-import { toastNotify } from "../Helper";
+import { userModel } from "../Interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "../Storage/Redux/store";
-import {
-  useGetRestaurantsByIdQuery,
-  useGetRestaurantsQuery,
-} from "../apis/restaurantApi";
+import { useGetRestaurantsByIdQuery } from "../apis/restaurantApi";
 
 function RestaurantDetails() {
   const { restaurantItemId } = useParams();
@@ -34,24 +28,6 @@ function RestaurantDetails() {
     setQuantity(newQuantity);
     return;
   };
-
-  /* const handleAddToCart = async (restaurantItemId: number) => {
-    if (!userData.id) {
-      navigate("/login");
-      return;
-    }
-    setIsAddingToCart(true);
-
-    const response: apiResponse = await updateShoppingCart({
-      restaurantItemId: restaurantItemId,
-      updateQuantityBy: quantity,
-      userId: userData.id,
-    });
-    if (response.data && response.data.isSuccess) {
-      toastNotify("Item added to cart successfully!");
-    }
-    setIsAddingToCart(false);
-  }; */
 
   return (
     <div className="container pt-4 pt-md-5">
@@ -95,20 +71,6 @@ function RestaurantDetails() {
                 style={{ fontSize: "25px", cursor: "pointer" }}></i>
             </span>
             <div className="row pt-4">
-              {/* <div className="col-5">
-                {isAddingToCart ? (
-                  <button disabled className="btn btn-success form-control">
-                    <MiniLoader />
-                  </button>
-                ) : (
-                  <button
-                    className="btn btn-success form-control"
-                    onClick={() => handleAddToCart(data.result?.id)}>
-                    Add to Cart
-                  </button>
-                )}
-              </div> */}
-
               <div className="col-5 ">
                 <button
                   className="btn btn-secondary form-control"
